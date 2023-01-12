@@ -1,24 +1,106 @@
 import { useState, useEffect } from 'react';
-import './App.css';
-import Chart1 from './pages/Chart1';
-import Chart2 from './pages/Chart2';
-import Chart3 from './pages/Chart3';
-import Comparison from './pages/Comparison';
-import Data from './assets/frontend_intern_project_data';
 import { Routes, Route } from 'react-router-dom';
+import './App.css';
+import Chart1 from './components/Chart1';
+import Chart2 from './components/Chart2';
+import Chart3 from './components/Chart3';
+import Comparison from './components/Comparison';
+import NoPage from './components/NoPage';
+import Data from './assets/frontend_intern_project_data';
 import AppRoutes from './AppRoutes';
 
 function App() {
+  const data = Data.data;
+  const sets = Object.keys(data);
+  const [ind, setInd] = useState(0);
+  // const [label, setLabel] = useState(sets[ind]);
+
+  const pieOptions = {
+    title: {
+        text: sets[ind],
+        left: 'center'
+    },
+    tooltip: {
+        trigger: 'item'
+    },
+    legend: {
+        orient: 'vertical',
+        left: 'left'
+    },
+    series: [{ 
+        name: 'pieData',
+        data: mapData(),
+        type: 'pie',
+        radius: '50%',
+    }]
+  };
+  const barOptions = {
+    title: {
+      text: sets[ind],
+      left: 'center'
+    },
+    xAxis: {
+        type: 'category',
+        data: data[sets[ind]].XData
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [{ 
+        data: data[sets[ind]].YData,
+        type: 'bar',
+    }]
+  };
+  const lineOptions = {
+    title: {
+      text: sets[ind],
+      left: 'center'
+    },
+    xAxis: {
+        type: 'category',
+        data: data[sets[ind]].XData
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [{ 
+        data: data[sets[ind]].YData,
+        type: 'line',
+    }]
+  };
+
+  function mapData() {
+    let mapping = [];
+    for (let i = 0; i < data[sets[ind]].XData.length; i++) {
+        let jsonData = {
+            "name": data[sets[ind]].XData[i],
+            "value": data[sets[ind]].YData[i]
+        };
+        mapping.push(jsonData);
+    }
+    // console.log(mapping[0]);
+    return mapping;
+  };
+
+  function handleToggle() {
+    if (ind == sets.length - 1) {
+      setInd(0);
+    } else {
+      setInd(ind + 1);
+    }
+    // console.log(ind);
+  };
+
   return (
     <div className="App">
       <AppRoutes />
-        <Routes>
-          <Route path="/" element={<Chart1 data={Data} />} />
-          <Route path="chart2" element={<Chart2 data={Data}/>} />
-          <Route path="chart3" element={<Chart3 data={Data}/>} />
-          <Route path="comp" element={<Comparison data={Data}/>} />
-          {/* <Route path="*" element={<NoPage />} /> */}
-        </Routes>
+      <Routes>
+        <Route path="/" element={<Chart1 options={pieOptions} />} />
+        <Route path="chart2" element={<Chart2 options={barOptions} toggle={handleToggle} modalOptions={pieOptions} />} />
+        <Route path="chart3" element={<Chart3 options={lineOptions} modalOptions={pieOptions} />} />
+        <Route path="comp" element={<Comparison pieOptions={pieOptions} barOptions={barOptions} lineOptions={lineOptions} />} />
+        <Route path="*" element={<NoPage />} />
+      </Routes>
     </div>
   );
 }

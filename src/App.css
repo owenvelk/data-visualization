@@ -26,15 +26,16 @@
 }
 
 .Page {
-  height: 90%;
+  min-height: 90%;
   display: flex;
   flex-direction: column;
+  gap: 2vh;
   justify-content: center;
   align-items: center;
 }
 
 .Chart {
-  width: 80%;
+  width: 90%;
   height: 50%;
 }
 

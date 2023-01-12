@@ -20,7 +20,6 @@ export default function AppRoutes() {
           </li>
         </ul>
       </nav>
-
       <Outlet />
     </div>
   )
