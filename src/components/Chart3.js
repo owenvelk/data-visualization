@@ -8,9 +8,9 @@ export default function Chart3(props) {
         <div className="Page">
             <Typography sx={{fontSize: 24}}>Chart 3</Typography>
             <Card className="Chart">
-                <ReactEcharts option={props.options} />
+                <ReactEcharts option={props.options} style={props.style} />
             </Card>
-            <MyModal modalOptions={props.modalOptions} />
+            <MyModal modalOptions={props.modalOptions} style={props.style} />
         </div>
     );
 }

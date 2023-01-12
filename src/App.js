@@ -25,7 +25,9 @@ function App() {
     },
     legend: {
         orient: 'vertical',
-        left: 'left'
+        left: 'left',
+        right: 5,
+        top: 5
     },
     series: [{ 
         name: 'pieData',
@@ -69,6 +71,12 @@ function App() {
     }]
   };
 
+  const chartStyle = {
+    height: '50vh',
+    width: '90vw',
+    
+  }
+
   function mapData() {
     let mapping = [];
     for (let i = 0; i < data[sets[ind]].XData.length; i++) {
@@ -95,10 +103,10 @@ function App() {
     <div className="App">
       <AppRoutes />
       <Routes>
-        <Route path="/" element={<Chart1 options={pieOptions} />} />
-        <Route path="chart2" element={<Chart2 options={barOptions} toggle={handleToggle} modalOptions={pieOptions} />} />
-        <Route path="chart3" element={<Chart3 options={lineOptions} modalOptions={pieOptions} />} />
-        <Route path="comp" element={<Comparison pieOptions={pieOptions} barOptions={barOptions} lineOptions={lineOptions} />} />
+        <Route path="/" element={<Chart1 options={pieOptions} style={chartStyle} />} />
+        <Route path="chart2" element={<Chart2 options={barOptions} toggle={handleToggle} modalOptions={pieOptions} style={chartStyle} />} />
+        <Route path="chart3" element={<Chart3 options={lineOptions} modalOptions={pieOptions} style={chartStyle} />} />
+        <Route path="comp" element={<Comparison pieOptions={pieOptions} barOptions={barOptions} lineOptions={lineOptions} style={chartStyle} />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
     </div>

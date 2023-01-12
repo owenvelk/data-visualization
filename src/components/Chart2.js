@@ -9,7 +9,7 @@ export default function Chart2(props) {
         <div className="Page">
             <Typography sx={{fontSize: 24}}>Chart 2</Typography>
             <Card className="Chart">
-                <ReactEcharts option={props.options} />
+                <ReactEcharts option={props.options} style={props.style} />
             </Card>
             <Button
                 sx={{backgroundColor: 'white', '&:hover': {backgroundColor: 'lightgrey'}}}
@@ -17,7 +17,7 @@ export default function Chart2(props) {
             >
                 Toggle Dataset
             </Button>
-            <MyModal modalOptions={props.modalOptions}/>
+            <MyModal modalOptions={props.modalOptions} style={props.style} />
         </div>
     );
 }

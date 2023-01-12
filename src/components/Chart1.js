@@ -8,7 +8,7 @@ export default function Chart1(props) {
         <div className="Page">
             <Typography sx={{fontSize: 24}}>Chart 1</Typography>
             <Card className="Chart">
-                <ReactEcharts option={props.options}/>
+                <ReactEcharts option={props.options} style={props.style} />
             </Card>
         </div>
     );

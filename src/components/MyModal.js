@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button } from '@mui/material';
+import { Button, Card } from '@mui/material';
 import ReactEcharts from 'echarts-for-react';
 import Modal from 'react-modal';
 
@@ -15,8 +15,8 @@ export default function MyModal(props) {
             marginRight: "-50%",
             transform: "translate(-50%, -50%)",
             backgroundColor: "white",
-            width: '80%',
-            height: '40%',
+            width: '92vw',
+            height: '55vh',
         },
     };
 
@@ -38,7 +38,7 @@ export default function MyModal(props) {
                 style={modalStyles}
                 ariaHideApp={false}
             >
-                <ReactEcharts option={props.modalOptions} />
+                <ReactEcharts option={props.modalOptions} style={props.style} />
             </Modal>
         </div>
     );
