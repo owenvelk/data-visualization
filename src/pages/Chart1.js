@@ -6,10 +6,12 @@ export default function Chart1(props) {
 
     return (
         <div className="Page">
-            <Typography>Levels</Typography>
             <Card className="Chart">
                 <ReactEcharts 
                     option={{
+                        title: {
+                            text: "Levels",
+                        },
                         xAxis: {
                             type: 'category',
                             data: data.Levels.XData
