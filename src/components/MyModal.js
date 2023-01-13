@@ -15,8 +15,6 @@ export default function MyModal(props) {
             marginRight: "-50%",
             transform: "translate(-50%, -50%)",
             backgroundColor: "white",
-            width: '92vw',
-            height: '55vh',
         },
     };
 

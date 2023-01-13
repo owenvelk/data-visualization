@@ -5,6 +5,7 @@ import Chart1 from './components/Chart1';
 import Chart2 from './components/Chart2';
 import Chart3 from './components/Chart3';
 import Comparison from './components/Comparison';
+import Snapshot from './components/Snapshot';
 import NoPage from './components/NoPage';
 import Data from './assets/frontend_intern_project_data';
 import AppRoutes from './AppRoutes';
@@ -86,7 +87,7 @@ function App() {
         };
         mapping.push(jsonData);
     }
-    // console.log(mapping[0]);
+    // console.log(data);
     return mapping;
   };
 
@@ -107,6 +108,7 @@ function App() {
         <Route path="chart2" element={<Chart2 options={barOptions} toggle={handleToggle} modalOptions={pieOptions} style={chartStyle} />} />
         <Route path="chart3" element={<Chart3 options={lineOptions} modalOptions={pieOptions} style={chartStyle} />} />
         <Route path="comp" element={<Comparison pieOptions={pieOptions} barOptions={barOptions} lineOptions={lineOptions} style={chartStyle} />} />
+        <Route path="snapshot" element={<Snapshot style={chartStyle} />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
     </div>

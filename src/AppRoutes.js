@@ -18,6 +18,9 @@ export default function AppRoutes() {
           <li>
             <Link className="AppLinks" to="/comp">Comparison</Link>
           </li>
+          <li>
+            <Link className="AppLinks" to="/snapshot">Stock Snapshot</Link>
+          </li>
         </ul>
       </nav>
       <Outlet />
